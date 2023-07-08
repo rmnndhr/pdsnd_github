@@ -14,6 +14,14 @@ def print_line():
     print('-'*40)
 
 
+def print_invalid():
+    """
+    Print a set of lines, followed by a text stating invalid entry.
+    """
+    print_line()
+    print('Invalid input received.')
+
+
 def get_filters():
     """
     Asks user to specify a city, month, and day to analyze.
@@ -45,8 +53,7 @@ def get_filters():
             city_counter = 0
         # If any character other than the city names existing in the CITY_DATA key is entered, print error message and continue loop
         else:
-            print('-'*40)
-            print('Invalid input received.')
+            print_invalid()
             print_line()
 
     while(month_counter):
@@ -57,8 +64,7 @@ def get_filters():
             month_counter = 0
             # If all isn't entered or if month doesn't exist in the months list, print error message and continue loop
         else:
-            print('-'*40)
-            print('Invalid input received.')
+            print_invalid()
             print_line()
 
     while(day_counter):
@@ -69,8 +75,7 @@ def get_filters():
             day_counter = 0
         # If any character other than all or days existing in the days list is entered, print error message and continue loop
         else:
-            print('-'*40)
-            print('Invalid input received.')
+            print_invalid()
             print_line()
 
     print_line()
@@ -361,8 +366,7 @@ def print_raw_data(df):
             elif display_yes == 'no':
                 break
             else:
-                print('-'*40)
-                print('Invalid input received.')
+                print_invalid()
         finally:
             print_line()
 
@@ -403,8 +407,7 @@ def main():
                     no_restart = 1
                     break 
                 else:
-                    print('-'*40)
-                    print('Invalid input received.')             
+                    print_invalid()             
             finally:
                 print_line()
 
