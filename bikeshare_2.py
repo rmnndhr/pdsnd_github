@@ -7,6 +7,13 @@ CITY_DATA = { 'chicago': 'chicago.csv',
               'new york city': 'new_york_city.csv',
               'washington': 'washington.csv' }
 
+def print_line():
+    """
+    Print a set of lines.
+    """
+    print('-'*40)
+
+
 def get_filters():
     """
     Asks user to specify a city, month, and day to analyze.
@@ -40,7 +47,7 @@ def get_filters():
         else:
             print('-'*40)
             print('Invalid input received.')
-            print('-'*40)
+            print_line()
 
     while(month_counter):
         # TO DO: get user input for month (all, january, february, ... , june)
@@ -52,7 +59,7 @@ def get_filters():
         else:
             print('-'*40)
             print('Invalid input received.')
-            print('-'*40)
+            print_line()
 
     while(day_counter):
         # TO DO: get user input for day of week (all, monday, tuesday, ... sunday)
@@ -64,9 +71,9 @@ def get_filters():
         else:
             print('-'*40)
             print('Invalid input received.')
-            print('-'*40)
+            print_line()
 
-    print('-'*40)
+    print_line()
     return city, month, day
 
 
@@ -217,7 +224,7 @@ def time_stats(df, month, day):
     print('The most Popular Start Hour is: {}'.format(popular_hour))
 
     print("\nThis took %s seconds." % (time.time() - start_time))
-    print('-'*40)
+    print_line()
 
 
 def station_stats(df):
@@ -256,7 +263,7 @@ def station_stats(df):
     print('The most Popular Combination of Start and End Station Trip is:', popular_combination_station)
 
     print("\nThis took %s seconds." % (time.time() - start_time))
-    print('-'*40)
+    print_line()
 
 
 def trip_duration_stats(df):
@@ -285,7 +292,7 @@ def trip_duration_stats(df):
     print('Mean Travel Time is: {}'.format(mean_travel))
 
     print("\nThis took %s seconds." % (time.time() - start_time))
-    print('-'*40)
+    print_line()
 
 
 def user_stats(df):
@@ -326,7 +333,7 @@ def user_stats(df):
         print('Birth Year column is not available for Washington city.')
 
     print("\nThis took %s seconds." % (time.time() - start_time))
-    print('-'*40)
+    print_line()
 
 def print_raw_data(df):
     """
@@ -357,7 +364,7 @@ def print_raw_data(df):
                 print('-'*40)
                 print('Invalid input received.')
         finally:
-            print('-'*40)
+            print_line()
 
 
 def main():
@@ -386,12 +393,12 @@ def main():
             try:
                 # If user presses yes, set counter to 0; breaking this loop
                 if restart == 'yes':
-                    print('-'*40)
+                    print_line()
                     print('Restarting.')
                     counter = 0
                 # If user presses no, set no_restart to 1, so that the previous while loop will not run
                 elif restart == 'no':
-                    print('-'*40)
+                    print_line()
                     print('Exiting.')
                     no_restart = 1
                     break 
@@ -399,7 +406,7 @@ def main():
                     print('-'*40)
                     print('Invalid input received.')             
             finally:
-                print('-'*40)
+                print_line()
 
 
 if __name__ == "__main__":
