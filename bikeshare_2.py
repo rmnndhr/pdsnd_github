@@ -172,10 +172,10 @@ def seconds_interval(in_seconds):
     # Create a list of intervals 
     for key, value in intervals.items():
         # Only add intervals with non-zero entries
-        if value:
-            # If interval is 1, change key to singular
-            if value == 1:
-                key = key.rstrip('s')
+        # If interval is 1, change key to singular
+        if value == 1:
+            time_list.append("{} {}".format(value, key.rstrip('s')))
+        elif value:
             time_list.append("{} {}".format(value, key))
     
     # Join the values in time_list to form a string separated by ','
