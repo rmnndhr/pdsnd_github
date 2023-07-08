@@ -332,7 +332,7 @@ def user_stats(df):
         print('The most recent year of birth is: {}'.format(newest_birth))
 
         # Find the mode of the birth year to calculate the most common birth year
-        common_birth = int(df['Birth Year'].mode()[0])
+        common_birth = int(get_mode(df['Birth Year']))
         print('The most common year of birth is: {}'.format(common_birth))
     except:
         print('Birth Year column is not available for Washington city.')
