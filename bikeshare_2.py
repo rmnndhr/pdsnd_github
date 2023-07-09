@@ -169,14 +169,14 @@ def seconds_interval(in_seconds):
     # List of intervals created from in_seconds
     time_list = []
 
-    # Create a list of intervals 
-    for key, value in intervals.items():
-        # Only add intervals with non-zero entries
-        # If interval is 1, change key to singular
-        if value == 1:
-            time_list.append("{} {}".format(value, key.rstrip('s')))
-        elif value:
-            time_list.append("{} {}".format(value, key))
+    # Create a list of intervals from in_seconds
+    # Only add intervals with non-zero entries
+    # If interval is 1, change key to singular
+    time_list = [
+        "{} {}".format(value, key.rstrip('s')) if value == 1 
+        else "{} {}".format(value, key)
+        for key, value in intervals.items() if value
+    ]
     
     # Join the values in time_list to form a string separated by ','
     time_interval = ', '.join(time_list)
