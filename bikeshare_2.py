@@ -7,6 +7,21 @@ CITY_DATA = { 'chicago': 'chicago.csv',
               'new york city': 'new_york_city.csv',
               'washington': 'washington.csv' }
 
+def print_line():
+    """
+    Print a set of lines.
+    """
+    print('-'*40)
+
+
+def print_invalid():
+    """
+    Print a set of lines, followed by a text stating invalid entry.
+    """
+    print_line()
+    print('Invalid input received.')
+
+
 def get_filters():
     """
     Asks user to specify a city, month, and day to analyze.
@@ -38,9 +53,8 @@ def get_filters():
             city_counter = 0
         # If any character other than the city names existing in the CITY_DATA key is entered, print error message and continue loop
         else:
-            print('-'*40)
-            print('Invalid input received.')
-            print('-'*40)
+            print_invalid()
+            print_line()
 
     while(month_counter):
         # TO DO: get user input for month (all, january, february, ... , june)
@@ -50,9 +64,8 @@ def get_filters():
             month_counter = 0
         # If all isn't entered or if month doesn't exist in the months list, print error message and continue loop
         else:
-            print('-'*40)
-            print('Invalid input received.')
-            print('-'*40)
+            print_invalid()
+            print_line()
 
     while(day_counter):
         # TO DO: get user input for day of week (all, monday, tuesday, ... sunday)
@@ -62,11 +75,10 @@ def get_filters():
             day_counter = 0
         # If any character other than all or days existing in the days list is entered, print error message and continue loop
         else:
-            print('-'*40)
-            print('Invalid input received.')
-            print('-'*40)
+            print_invalid()
+            print_line()
 
-    print('-'*40)
+    print_line()
     return city, month, day
 
 
@@ -157,14 +169,14 @@ def seconds_interval(in_seconds):
     # List of intervals created from in_seconds
     time_list = []
 
-    # Create a list of intervals 
-    for key, value in intervals.items():
-        # Only add intervals with non-zero entries
-        if value:
-            # If interval is 1, change key to singular
-            if value == 1:
-                key = key.rstrip('s')
-            time_list.append("{} {}".format(value, key))
+    # Create a list of intervals from in_seconds
+    # Only add intervals with non-zero entries
+    # If interval is 1, change key to singular
+    time_list = [
+        "{} {}".format(value, key.rstrip('s')) if value == 1 
+        else "{} {}".format(value, key)
+        for key, value in intervals.items() if value
+    ]
     
     # Join the values in time_list to form a string separated by ','
     time_interval = ', '.join(time_list)
@@ -219,7 +231,7 @@ def time_stats(df, month, day):
     print('The most Popular Start Hour is: {}'.format(popular_hour))
 
     print("\nThis took %s seconds." % (time.time() - start_time))
-    print('-'*40)
+    print_line()
 
 
 def station_stats(df):
@@ -258,7 +270,7 @@ def station_stats(df):
     print('The most Popular Combination of Start and End Station Trip is:', popular_combination_station)
 
     print("\nThis took %s seconds." % (time.time() - start_time))
-    print('-'*40)
+    print_line()
 
 
 def trip_duration_stats(df):
@@ -287,7 +299,7 @@ def trip_duration_stats(df):
     print('Mean Travel Time is: {}'.format(mean_travel))
 
     print("\nThis took %s seconds." % (time.time() - start_time))
-    print('-'*40)
+    print_line()
 
 
 def user_stats(df):
@@ -322,13 +334,13 @@ def user_stats(df):
         print('The most recent year of birth is: {}'.format(newest_birth))
 
         # Find the mode of the birth year to calculate the most common birth year
-        common_birth = int(df['Birth Year'].mode()[0])
+        common_birth = int(get_mode(df['Birth Year']))
         print('The most common year of birth is: {}'.format(common_birth))
     except:
         print('Birth Year column is not available for Washington city.')
 
     print("\nThis took %s seconds." % (time.time() - start_time))
-    print('-'*40)
+    print_line()
 
 def print_raw_data(df):
     """
@@ -356,10 +368,9 @@ def print_raw_data(df):
             elif display_yes == 'no':
                 break
             else:
-                print('-'*40)
-                print('Invalid input received.')
+                print_invalid()
         finally:
-            print('-'*40)
+            print_line()
 
 
 def main():
@@ -388,20 +399,19 @@ def main():
             try:
                 # If user presses yes, set counter to 0; breaking this loop
                 if restart == 'yes':
-                    print('-'*40)
+                    print_line()
                     print('Restarting.')
                     counter = 0
                 # If user presses no, set no_restart to 1, so that the previous while loop will not run
                 elif restart == 'no':
-                    print('-'*40)
+                    print_line()
                     print('Exiting.')
                     no_restart = 1
                     break 
                 else:
-                    print('-'*40)
-                    print('Invalid input received.')             
+                    print_invalid()             
             finally:
-                print('-'*40)
+                print_line()
 
 
 if __name__ == "__main__":
