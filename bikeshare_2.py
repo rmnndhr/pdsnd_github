@@ -48,7 +48,7 @@ def get_filters():
         # If user entered all, or if month exists in the months list, set counter to 0; making while loop invalid
         if month.lower() == 'all' or month.title() in months:
             month_counter = 0
-            # If all isn't entered or if month doesn't exist in the months list, print error message and continue loop
+        # If all isn't entered or if month doesn't exist in the months list, print error message and continue loop
         else:
             print('-'*40)
             print('Invalid input received.')
@@ -186,23 +186,25 @@ def time_stats(df, month, day):
 
     # TO DO: display the most common month
 
-    # If all is not selected for month, the entered month will always be the most common month
+    # If user selects all
     if month == 'all':
         # Find the most common month (string)
         popular_month = get_mode(df['Month'])
         print('The most Popular Month is: {}'.format(popular_month))
-    # Display user entered month
+    # If all is not selected for month, the entered month will always be the most common month
+    # Hence, display user entered month
     else:
         print('The Month you entered is: {}'.format(month.title()))
 
     # TO DO: display the most common day of week
     
-    # If all is not selected for day, the entered day will always be the most common day
+    # If user selects all
     if day == 'all':
         # Find the most common day of the week
         popular_day_of_week = get_mode(df['Day of Week'])
         print('The most Popular Day of Week is: {}'.format(popular_day_of_week))
-    # Display user entered day
+    # If all is not selected for day, the entered day will always be the most common day
+    # Hence, display user entered day
     else:
         print('The Day you entered is: {}'.format(day.title()))
 
