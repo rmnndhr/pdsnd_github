@@ -19,8 +19,14 @@ Using the programming language Python,
   - The Most Popular Stations and Trip
   - Trip Duration
   - User Stats
-- build an interactive environment to request input (city, month(s), day(s)) from user and flter the resulting output
+- build an interactive environment to request input (city, month(s), day(s)) from user and filter the resulting output
 - display the raw data (filtered table based on user selected city, month, day) if requested by the user
+
+### Data Wrangling Steps Taken
+Washington data didn't have Gender and Birth Year data available. It didn't have any Null values either. For the remaining states, the following data cleaning steps were taken:
+- Null User Type entries were replaced with Unspecified
+- Null Gender entries were replaced with Unknown
+- Null Birth Year entries were interpolated
 
 ### Files used
 - bikeshare_2.py
