@@ -15,10 +15,18 @@ Using the programming language Python,
   - New York City
   - Washington
 - generate useful descriptive statistics from the dataset such as:
-  - The Most Frequent Times of Travel
-  - The Most Popular Stations and Trip
-  - Trip Duration
-  - User Stats
+  - Popular times of travel (i.e., occurs most often in the start time)
+    - most common month
+    - most common day of week
+    - most common hour of day
+  - Popular stations and trip
+    - most common start station
+    - most common end station
+    - most common trip from start to end (i.e., most frequent combination of start station and end station)
+  - Trip duration
+    - total travel time
+    - average travel time
+  - User stats
 - build an interactive environment to request input (city, month(s), day(s)) from user and filter the resulting output
 - display the raw data (filtered table based on user selected city, month, day) if requested by the user
 
